@@ -5,8 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>abb5dd47-a876-4ffa-9175-778fbaef9643</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>flaskr.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -15,6 +14,7 @@
     <RootNamespace>Flaskr</RootNamespace>
     <InterpreterId>{0b1caed2-ced6-4e2c-b42c-08686d899030}</InterpreterId>
     <InterpreterVersion>3.5</InterpreterVersion>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +40,7 @@
   <ItemGroup>
     <Content Include="requirements.txt" />
     <Content Include="templates\layout.html" />
+    <Content Include="templates\login.html" />
     <Content Include="templates\show_entries.html" />
   </ItemGroup>
   <ItemGroup>
