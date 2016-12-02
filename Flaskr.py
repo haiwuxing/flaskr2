@@ -17,12 +17,6 @@ app.config.update(dict(
     ))
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
-
-#app.run('localhost', '5555')
-
 
 def connect_db():
     """Connects to the specific database."""
@@ -56,3 +50,31 @@ def initdb_command():
     """Initializes the database."""
     init_db()
     print('Initialized the database.')
+
+# Ôö
+@app.route('/add', methods=['POST'])
+def add_entry():
+    if not session.get('logged_in'):
+        abort(401)
+    db = get_db()
+    db.execute('insert into entries (title, text) values (?, ?)',
+        [request.form['title'], request.form['text']])
+    db.commit()
+    flash('New entry was successfully posted')
+    return redirect(url_for('show_entries'))
+
+# É¾
+
+# ²é
+@app.route('/')
+def show_entries():
+    db = get_db()
+    cur = db.execute('select title, text from entries order by id desc')
+    entries = cur.fetchall()
+    return render_template('show_entries.html', entries=entries)
+
+# ¸Ä
+
+
+if __name__ == '__main__':
+    app.run('localhost', '5555')
